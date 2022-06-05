@@ -3,6 +3,7 @@ import PropTypes from "prop-types";
 
 export default function Task({
   task: { id, title, state },
+  prefix,
   onArchiveTask,
   onPinTask,
 }) {
@@ -25,7 +26,7 @@ export default function Task({
       <div className="title">
         <input
           type="text"
-          value={title}
+          value={`${prefix ? prefix : ''} ${title}`}
           readOnly={true}
           placeholder="Input title"
         />
@@ -53,6 +54,7 @@ Task.propTypes = {
     title: PropTypes.string.isRequired,
     state: PropTypes.string.isRequired,
   }),
-  onArchiveTask: PropTypes.func,
+    prefix: PropTypes.string,
+    onArchiveTask: PropTypes.func,
   onPinTask: PropTypes.func,
 };
